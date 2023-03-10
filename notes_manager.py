@@ -23,13 +23,13 @@ class NotesManager:
   def save_notes(self):
     notes_data = [note.to_dict() for note in self.notes]
     with open(self.file_path, "w") as f:
-      json.dump(notes_data, f, indent=4, separators=(';', ':'))
+      json.dump(notes_data, f, indent=4)
 
   def add_note(self, title, body):
     if not title or not body:
       print("Title and body are required.")
       return
-    id = random.randint(1, 101);
+    id = random.randint(1, 1001);
     note = Note(id, title, body)
     self.notes.append(note)
     self.save_notes()
